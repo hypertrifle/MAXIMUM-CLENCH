@@ -2,21 +2,11 @@ package states;
 
 import entities.Player;
 
-import luxe.Vector;
 import luxe.States;
-import luxe.Sprite;
 import luxe.Color;
 import luxe.Rectangle;
 import phoenix.BitmapFont;
-import phoenix.geometry.TextGeometry;
-
-import luxe.components.sprite.SpriteAnimation;
-
-import luxe.importers.texturepacker.TexturePackerData;
-import luxe.importers.texturepacker.TexturePackerJSON;
-import luxe.importers.texturepacker.TexturePackerSpriteAnimation;
-
-
+import phoenix.geometry.Geometry;
 
 // import luxe.Input;
 
@@ -27,6 +17,7 @@ class PlayState extends State {
 
     public var PlayerOne:Player;
     public var ready:Bool = false;
+    public var world:Geometry;
 
 public function new(_config:Dynamic){
     super(_config);
@@ -47,6 +38,17 @@ override function init() {
         //build our planet?
 
         // var world = Luxe.
+
+        Contants.worldSize = Luxe.screen.height/3.5;
+        Contants.worldCirc = 2*Math.PI*Contants.worldSize;
+
+        world = Luxe.draw.circle(
+            {
+                x : Luxe.screen.w/2,
+                y : Luxe.screen.h/2,
+                r:Contants.worldSize
+
+        });
 
         PlayerOne = new Player({playerNumber:1});
        

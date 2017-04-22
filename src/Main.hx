@@ -24,8 +24,8 @@ class Main extends luxe.Game {
     override function config(config:GameConfig) {
 
         config.window.title = 'LD 38';
-        config.window.width = 960;
-        config.window.height = 640;
+        config.window.width = 1280;
+        config.window.height = 700;
         config.window.fullscreen = false;
        
         config.preload.textures.push({ id:'assets/textures_src/idle/idle_000.png' });
@@ -33,6 +33,9 @@ class Main extends luxe.Game {
 
         config.preload.textures.push({id:"assets/atlas.png"});
         config.preload.textures.push({id:"assets/players.png"});
+
+        config.preload.textures.push({id:"assets/fist/fist_000.png"});
+
         config.preload.jsons.push({id:"assets/playerAnimations.json"});
 
         return config;
@@ -45,6 +48,10 @@ class Main extends luxe.Game {
         Luxe.input.bind_key('fire', Key.space); // keyboard
         Luxe.input.bind_key('p1left', Key.left); 
         Luxe.input.bind_key('p1right', Key.right);
+
+        Luxe.input.bind_key('p1fistleft', Key.key_q); 
+        Luxe.input.bind_key('p1fistright', Key.key_w);
+
         Luxe.input.bind_key('p1jump', Key.up);
 
 

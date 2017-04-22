@@ -9,7 +9,7 @@
     },
     "run1" : {
         "frame_size":{ "x":"64", "y":"64" },
-        "frameset": ["13-28"],
+        "frameset": ["20-28", "13-19"],
         "pingpong":"false",
         "loop": "true",
         "speed": "20"
