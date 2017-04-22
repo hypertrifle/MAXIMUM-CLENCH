@@ -2,14 +2,7 @@
     "idle1" : {
         "frame_size":{ "x":"64", "y":"64" },
         "frameset": ["1-12"],
-        "events" : [{"frame":8, "event":"foot.1"}, {"frame":1, "event":"foot.2"}, { "frame": 6 }],
-        "pingpong":"false",
-        "loop": "true",
-        "speed": "20"
-    },
-    "run1" : {
-        "frame_size":{ "x":"64", "y":"64" },
-        "frameset": ["31-39", "24-30"],
+        "events" : [{"frame":51, "event":"WTF"}],
         "pingpong":"false",
         "loop": "true",
         "speed": "20"
@@ -20,5 +13,70 @@
         "pingpong":"false",
         "loop": "true",
         "speed": "20"
+    },
+    "run1" : {
+        "frame_size":{ "x":"64", "y":"64" },
+        "frameset": ["31-38", "24-30"],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+    },
+    "dash1" : {
+        "frame_size":{ "x":"64", "y":"64" },
+        "events" : [{"frame":42, "event":"dash.end"}, {"frame":50,"event":"dash.coolend"}],
+        "frameset": ["39-50"],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+        
+    },
+    "floordash1" : {
+        "frame_size":{ "x":"64", "y":"64" },
+        "events" : [{"frame":42, "event":"dash.end"}, {"frame":50,"event":"dash.coolend"}],
+        "frameset": ["39-50"],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+        
+    },
+    "idle2" : {
+        "frame_size":{ "x":"64", "y":"64" },
+        "frameset": ["51-62"],
+        "events" : [{"frame":51, "event":"WTF"}],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+    },
+    "jump2" : {
+        "frame_size":{ "x":"64", "y":"64" },
+        "frameset": ["63-73","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72","73","73","72","72"],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+    },
+    "run2" : {
+        "frame_size":{ "x":"64", "y":"64" },
+        "frameset": ["81-88", "74-80"],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+    },
+    "dash2" : {
+        "frame_size":{ "x":"64", "y":"64" },
+        "events" : [{"frame":92, "event":"dash.end"}, {"frame":100,"event":"dash.coolend"}],
+        "frameset": ["89-100"],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+        
+    },
+    "floordash2" : {
+        "frame_size":{ "x":"64", "y":"64" },
+        "events" : [{"frame":92, "event":"dash.end"}, {"frame":100,"event":"dash.coolend"}],
+        "frameset": ["89-100"],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+        
     }
 }

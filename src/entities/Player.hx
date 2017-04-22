@@ -21,16 +21,19 @@ class Player extends Sprite {
 
     public var playerNumber:Int;
 
+
+
     public var texture_src:Texture;
 
     public var animations:SpriteAnimation;
 
     public var velocity:Float;
+    public var prevVelocity:Float;
     public var jumpVelocity:Float;
 
     private var maxSpeed:Float = 200;
-    private var ACCELLERATION:Float = 20;
-    private var DECELERATION:Float = 10;
+    private var ACCELLERATION:Float = 1200;
+    private var DECELERATION:Float = 600;
 
 
     public var worldPosition:Vector;
@@ -45,6 +48,7 @@ class Player extends Sprite {
     public var fistPower:Float = 0;
 
     public var jumping:Bool = false;
+    public var dashing:Bool = false;
     
 
 
@@ -67,6 +71,13 @@ public function new(options:PlayerOptions){
             // centered: true,
         });
 
+        events.listen("dash.end", dashEnd);
+        events.listen("dash.coolend", dashEndAfterCooldown);
+
+        events.listen('*', function(e){
+            trace( e.event );
+        });
+
 }
 
 override function init(){
@@ -79,6 +90,11 @@ override function init(){
 
     fistVelocity = 0;
     fistPosition = 0;
+    if(playerNumber > 0){
+        worldPosition.x += playerNumber *100;
+        fistPosition += playerNumber *100;
+    }
+
 
     var fistTexture:Texture = Luxe.resources.texture("assets/fist.png");
     fistTexture.filter_mag = FilterType.nearest;
@@ -98,7 +114,7 @@ override function init(){
     var fistanimations = new SpriteAnimation({ name:'anim' });
     this.fist.add(fistanimations);
     fistanimations.add_from_json_object( fistAnimationsData );
-    fistanimations.animation = "idle";
+    fistanimations.animation = "idle"+playerNumber;
     fistanimations.play();
 
 
@@ -136,23 +152,43 @@ public function endJump(){
             jumpVelocity = 400;
             
         }
-        
-        if(Luxe.input.inputdown('p'+playerNumber+'left') || Luxe.input.gamepadaxis(playerNumber - 1,0) < -0.3) {
+
+        if(Luxe.input.inputdown('p'+playerNumber+'dash') && !dashing){
+           
+            if(!jumping){
+                //ground dash
+                prevVelocity = velocity;
+                velocity = flipx? 600 : -600;
+                playAnimation("floordash");
+
+            } else {
+                //air dash
+                // trace("AIR DSAH");
+                prevVelocity = velocity;
+                velocity = flipx? 600 : -600;
+                playAnimation("dash");
+            }
+            dashing = true;
+        }
+
+        if(dashing){
+
+        }else if(Luxe.input.inputdown('p'+playerNumber+'left') || Luxe.input.gamepadaxis(playerNumber - 1,0) < -0.3) {
             playAnimation("run");
             this.flipx = false;
-            velocity -=ACCELLERATION;
-            if(velocity < -maxSpeed) velocity = -maxSpeed;
+            velocity -=(ACCELLERATION*dt);
+            if(velocity < -maxSpeed && !dashing) velocity = -maxSpeed;
         } else if (Luxe.input.inputdown('p'+playerNumber+'right') || Luxe.input.gamepadaxis(playerNumber - 1,0) > 0.3) {
             playAnimation("run");
             this.flipx = true;
-            velocity +=ACCELLERATION;
-            if(velocity > maxSpeed) velocity = maxSpeed;
+            velocity +=(ACCELLERATION*dt);
+            if(velocity > maxSpeed && !dashing) velocity = maxSpeed;
         } else {
             playAnimation("idle");
             //decellerate
             var vec = Math.min(Math.max(velocity,-1), 1); // either 1 / -1;
-            if(Math.abs(velocity) > DECELERATION){
-                velocity -= vec*DECELERATION;
+            if(Math.abs(velocity) > (DECELERATION*dt)){
+                velocity -= vec*(DECELERATION*dt);
             } else {
                 velocity = 0;
                 
@@ -168,18 +204,18 @@ public function endJump(){
             fistPower += 20*dt;
             this.fist.origin.y = 512+Contants.worldSize+128 + fistPower;
 
-        } else if(fistPulling){
+        }else if(Luxe.input.inputdown("p"+playerNumber+"fistleft")){
+            fistVelocity -=ACCELLERATION*dt;
+            if(fistVelocity < -maxSpeed/2) fistVelocity = -maxSpeed/2;
+        } else if (Luxe.input.inputdown("p"+playerNumber+"fistright")){
+            fistVelocity +=ACCELLERATION*dt;
+            if(fistVelocity > maxSpeed/2) fistVelocity = maxSpeed/2;
+        }  else if(fistPulling){
             //do a punch
             fistPulling = false;
             Actuate.tween(fist.origin,0.1,{y:512+Contants.worldSize},true).onComplete(resetFist);
 
 
-        } else if(Luxe.input.inputdown("p"+playerNumber+"fistleft")){
-            fistVelocity -=ACCELLERATION;
-            if(fistVelocity < -maxSpeed) fistVelocity = -maxSpeed;
-        } else if (Luxe.input.inputdown("p"+playerNumber+"fistright")){
-            fistVelocity +=ACCELLERATION;
-            if(fistVelocity > maxSpeed) fistVelocity = maxSpeed;
         } 
 
 
@@ -189,14 +225,16 @@ public function endJump(){
         //apply physics
         worldPosition.x += (velocity)* dt;
 
-        worldPosition.y = Math.max(0, worldPosition.y + (jumpVelocity*dt));
-        
-        if(worldPosition.y > 5){
-            jumpVelocity -=20;
-        } else {
-            worldPosition.y = 0;
-            jumping = false;
-            jumpVelocity = 0;
+        if(Math.abs(velocity) != 600){
+            worldPosition.y = Math.max(0, worldPosition.y + (jumpVelocity*dt));
+            
+            if(worldPosition.y > 5){
+                jumpVelocity -=20;
+            } else {
+                worldPosition.y = 0;
+                jumping = false;
+                jumpVelocity = 0;
+            }
         }
         origin.y = 64+Contants.worldSize + worldPosition.y;
 
@@ -217,7 +255,8 @@ public function endJump(){
   }//update
 
   public function playAnimation(ref:String){
-      if(animations.animation != ref+playerNumber && !jumping){
+      if((animations.animation != ref+playerNumber) && !dashing && (!jumping || ref == "dash" )){
+          trace(ref);
         animations.animation = ref+playerNumber;        
       }
 
@@ -235,6 +274,18 @@ public function endJump(){
   public function smash(){
       trace("player: "+playerNumber+ " got smashed");
   }
+
+  public function dashEnd(_:Dynamic):Void{
+      trace("dash end");
+      velocity = prevVelocity;
+      if((velocity < 0 && flipx) || (velocity>0 && !flipx)){
+          velocity *= -1;
+      }
+  }
+public function dashEndAfterCooldown(_:Dynamic):Void{
+      dashing = false;
+}
+  
 
 
 

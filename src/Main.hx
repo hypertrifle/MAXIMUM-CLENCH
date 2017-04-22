@@ -47,19 +47,27 @@ class Main extends luxe.Game {
     override function ready() {
 
         //set up any input bindings!
-        Luxe.input.bind_key('fire', Key.space); // keyboard
         Luxe.input.bind_key('p1left', Key.left); 
         Luxe.input.bind_key('p1right', Key.right);
         Luxe.input.bind_key('p1jump', Key.up);
-        Luxe.input.bind_key('p1fistleft', Key.key_q); 
-        Luxe.input.bind_key('p1fistright', Key.key_w);
-
-        // Luxe.input.bind_key('p1jump', Key.up);
-
-
+        Luxe.input.bind_key('p1dash', Key.down);
+        Luxe.input.bind_key('p1fistleft', Key.leftbracket); 
+        Luxe.input.bind_key('p1fistright', Key.rightbracket);
         Luxe.input.bind_gamepad('p1fistleft', 9, 0);
         Luxe.input.bind_gamepad('p1fistright', 10, 0);
         Luxe.input.bind_gamepad('p1jump', 0, 0);
+        Luxe.input.bind_gamepad('p1dash', 1, 0);
+
+        Luxe.input.bind_key('p2left', Key.key_a); 
+        Luxe.input.bind_key('p2right', Key.key_d);
+        Luxe.input.bind_key('p2jump', Key.key_w);
+        Luxe.input.bind_key('p2dash', Key.key_s);
+        Luxe.input.bind_key('p2fistleft', Key.key_c); 
+        Luxe.input.bind_key('p2fistright', Key.key_v);
+        Luxe.input.bind_gamepad('p2fistleft', 9, 1);
+        Luxe.input.bind_gamepad('p2fistright', 10, 1);
+        Luxe.input.bind_gamepad('p2jump', 0, 1);
+        Luxe.input.bind_gamepad('p2dash', 1, 1);
 
         
 

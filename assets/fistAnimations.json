@@ -1,7 +1,14 @@
 {
-    "idle" : {
+    "idle1" : {
         "frame_size":{ "x":"256", "y":"512" },
         "frameset": ["1-12"],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+    },
+    "idle2" : {
+        "frame_size":{ "x":"256", "y":"512" },
+        "frameset": ["13-24"],
         "pingpong":"false",
         "loop": "true",
         "speed": "20"
