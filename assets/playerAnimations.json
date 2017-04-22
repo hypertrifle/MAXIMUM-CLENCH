@@ -1,0 +1,17 @@
+{
+    "idle1" : {
+        "frame_size":{ "x":"64", "y":"64" },
+        "frameset": ["1-12"],
+        "events" : [{"frame":8, "event":"foot.1"}, {"frame":1, "event":"foot.2"}, { "frame": 6 }],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+    },
+    "run1" : {
+        "frame_size":{ "x":"64", "y":"64" },
+        "frameset": ["13-28"],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+    }
+}

@@ -28,15 +28,15 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
+        <true/>
         <key>shapeDebug</key>
         <false/>
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser-json-array</string>
+        <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename></filename>
+        <filename>players.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -104,7 +104,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -146,13 +146,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileNames</key>
-        <map type="GFileNameMap">
-            <key>data</key>
-            <struct type="DataFile">
-                <key>name</key>
-                <filename></filename>
-            </struct>
-        </map>
+        <map type="GFileNameMap"/>
         <key>multiPack</key>
         <false/>
         <key>forceIdenticalLayout</key>
@@ -167,7 +161,7 @@
             <string></string>
         </struct>
         <key>autoAliasEnabled</key>
-        <true/>
+        <false/>
         <key>trimSpriteNames</key>
         <false/>
         <key>prependSmartFolderName</key>
@@ -181,13 +175,13 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>1</uint>
+            <uint>0</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -199,23 +193,50 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">src</key>
+            <key type="filename">textures_src/idle/idle_000.png</key>
+            <key type="filename">textures_src/idle/idle_001.png</key>
+            <key type="filename">textures_src/idle/idle_002.png</key>
+            <key type="filename">textures_src/idle/idle_003.png</key>
+            <key type="filename">textures_src/idle/idle_004.png</key>
+            <key type="filename">textures_src/idle/idle_005.png</key>
+            <key type="filename">textures_src/idle/idle_006.png</key>
+            <key type="filename">textures_src/idle/idle_007.png</key>
+            <key type="filename">textures_src/idle/idle_008.png</key>
+            <key type="filename">textures_src/idle/idle_009.png</key>
+            <key type="filename">textures_src/idle/idle_010.png</key>
+            <key type="filename">textures_src/idle/idle_011.png</key>
+            <key type="filename">textures_src/p1run/p1run_000.png</key>
+            <key type="filename">textures_src/p1run/p1run_001.png</key>
+            <key type="filename">textures_src/p1run/p1run_002.png</key>
+            <key type="filename">textures_src/p1run/p1run_003.png</key>
+            <key type="filename">textures_src/p1run/p1run_004.png</key>
+            <key type="filename">textures_src/p1run/p1run_005.png</key>
+            <key type="filename">textures_src/p1run/p1run_006.png</key>
+            <key type="filename">textures_src/p1run/p1run_007.png</key>
+            <key type="filename">textures_src/p1run/p1run_008.png</key>
+            <key type="filename">textures_src/p1run/p1run_009.png</key>
+            <key type="filename">textures_src/p1run/p1run_010.png</key>
+            <key type="filename">textures_src/p1run/p1run_011.png</key>
+            <key type="filename">textures_src/p1run/p1run_012.png</key>
+            <key type="filename">textures_src/p1run/p1run_013.png</key>
+            <key type="filename">textures_src/p1run/p1run_014.png</key>
+            <key type="filename">textures_src/p1run/p1run_015.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>0,0,0,0</rect>
+                <rect>16,16,32,32</rect>
                 <key>scale9Paddings</key>
-                <rect>0,0,0,0</rect>
+                <rect>16,16,32,32</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>src</filename>
+            <filename>textures_src</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
