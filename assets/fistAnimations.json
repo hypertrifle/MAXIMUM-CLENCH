@@ -1,0 +1,9 @@
+{
+    "idle" : {
+        "frame_size":{ "x":"256", "y":"512" },
+        "frameset": ["1-12"],
+        "pingpong":"false",
+        "loop": "true",
+        "speed": "20"
+    }
+}

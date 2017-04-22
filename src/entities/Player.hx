@@ -26,13 +26,14 @@ class Player extends Sprite {
     public var animations:SpriteAnimation;
 
     public var velocity:Float;
+    public var jumpVelocity:Float;
 
     private var maxSpeed:Float = 200;
     private var ACCELLERATION:Float = 20;
     private var DECELERATION:Float = 10;
 
 
-    public var worldPosition:Float = 0;
+    public var worldPosition:Vector;
 
     public var ready:Bool = false;
 
@@ -42,6 +43,9 @@ class Player extends Sprite {
 
     public var fistPulling:Bool = false;
     public var fistPower:Float = 0;
+
+    public var jumping:Bool = false;
+    
 
 
 public function new(options:PlayerOptions){
@@ -58,7 +62,8 @@ public function new(options:PlayerOptions){
             pos : Luxe.screen.mid,
             scale: new Vector(1,1,1),
             size : new Vector(64,64),
-            origin: new Vector(32,64+Contants.worldSize,0)
+            origin: new Vector(32,64+Contants.worldSize,0),
+            depth:1
             // centered: true,
         });
 
@@ -69,12 +74,13 @@ override function init(){
     super.init();
 
     velocity = 0;
-    worldPosition = 0;
+    jumpVelocity = 0;
+    worldPosition = new Vector(0,0,0);
 
     fistVelocity = 0;
     fistPosition = 0;
 
-    var fistTexture:Texture = Luxe.resources.texture("assets/fist/fist_000.png");
+    var fistTexture:Texture = Luxe.resources.texture("assets/fist.png");
     fistTexture.filter_mag = FilterType.nearest;
     
     fist = new Sprite({
@@ -83,9 +89,18 @@ override function init(){
             pos : Luxe.screen.mid,
             scale: new Vector(1,1,1),
             size : new Vector(256,512),
-            origin: new Vector(128,512+Contants.worldSize+128,0)
+            origin: new Vector(128,512+Contants.worldSize+128,0),
+            depth:2
             // centered: true,
         });
+
+    var fistAnimationsData = Luxe.resources.json('assets/fistAnimations.json').asset.json;
+    var fistanimations = new SpriteAnimation({ name:'anim' });
+    this.fist.add(fistanimations);
+    fistanimations.add_from_json_object( fistAnimationsData );
+    fistanimations.animation = "idle";
+    fistanimations.play();
+
 
 
     trace("loading player");
@@ -101,6 +116,10 @@ override function init(){
     ready = true;
     
 }
+
+public function endJump(){
+    jumping = false;
+}
   
   override function update(dt:Float){
   	super.update(dt);
@@ -109,14 +128,21 @@ override function init(){
           return;
       }
       
-
       //input
-        if(Luxe.input.inputdown('p'+playerNumber+'left')) {
+        if(Luxe.input.inputpressed('p'+playerNumber+'jump') && !jumping){
+            
+            playAnimation("jump");
+            jumping = true;
+            jumpVelocity = 400;
+            
+        }
+        
+        if(Luxe.input.inputdown('p'+playerNumber+'left') || Luxe.input.gamepadaxis(playerNumber - 1,0) < -0.3) {
             playAnimation("run");
             this.flipx = false;
             velocity -=ACCELLERATION;
             if(velocity < -maxSpeed) velocity = -maxSpeed;
-        } else if (Luxe.input.inputdown('p'+playerNumber+'right')) {
+        } else if (Luxe.input.inputdown('p'+playerNumber+'right') || Luxe.input.gamepadaxis(playerNumber - 1,0) > 0.3) {
             playAnimation("run");
             this.flipx = true;
             velocity +=ACCELLERATION;
@@ -142,31 +168,46 @@ override function init(){
             fistPower += 20*dt;
             this.fist.origin.y = 512+Contants.worldSize+128 + fistPower;
 
+        } else if(fistPulling){
+            //do a punch
+            fistPulling = false;
+            Actuate.tween(fist.origin,0.1,{y:512+Contants.worldSize},true).onComplete(resetFist);
+
+
         } else if(Luxe.input.inputdown("p"+playerNumber+"fistleft")){
             fistVelocity -=ACCELLERATION;
             if(fistVelocity < -maxSpeed) fistVelocity = -maxSpeed;
         } else if (Luxe.input.inputdown("p"+playerNumber+"fistright")){
             fistVelocity +=ACCELLERATION;
             if(fistVelocity > maxSpeed) fistVelocity = maxSpeed;
-        } else if(fistPulling){
-            //do a punch
-            fistPulling = false;
-            Luxe.events.fire("fist.player"+playerNumber+".punch",{power:fistPower});
-            fistPower = 0;
-            Actuate.tween(fist.origin,0.1,{y:512+Contants.worldSize},true).onComplete(resetFist);
+        } 
 
 
-        }
 
 
 
         //apply physics
-        worldPosition += (velocity)* dt;
+        worldPosition.x += (velocity)* dt;
+
+        worldPosition.y = Math.max(0, worldPosition.y + (jumpVelocity*dt));
+        
+        if(worldPosition.y > 5){
+            jumpVelocity -=20;
+        } else {
+            worldPosition.y = 0;
+            jumping = false;
+            jumpVelocity = 0;
+        }
+        origin.y = 64+Contants.worldSize + worldPosition.y;
+
+
+
+
         fistPosition += (fistVelocity)* dt;
 
         //position our dude based on our world position!
 
-        var worldPositionScaled = worldPosition / 25; // scaled better so world circumfrence is position 0-1
+        var worldPositionScaled = worldPosition.x / 25; // scaled better so world circumfrence is position 0-1
         var worldFistPositionScaled = fistPosition / 25; // scaled better so world circumfrence is position 0-1
 
 
@@ -176,15 +217,23 @@ override function init(){
   }//update
 
   public function playAnimation(ref:String){
-      if(animations.animation != ref+playerNumber){
+      if(animations.animation != ref+playerNumber && !jumping){
         animations.animation = ref+playerNumber;        
       }
 
   }
 
+
+
   public function resetFist(){
-      
+       Luxe.events.fire("fist.punch",{power:fistPower, player:playerNumber, angle: fist.rotation_z});
+       fistPower = 0;
+
       Actuate.tween(fist.origin,0.3,{y:512+Contants.worldSize+128},true);
+  }
+
+  public function smash(){
+      trace("player: "+playerNumber+ " got smashed");
   }
 
 

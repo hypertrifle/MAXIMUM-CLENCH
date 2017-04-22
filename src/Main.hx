@@ -34,9 +34,11 @@ class Main extends luxe.Game {
         config.preload.textures.push({id:"assets/atlas.png"});
         config.preload.textures.push({id:"assets/players.png"});
 
-        config.preload.textures.push({id:"assets/fist/fist_000.png"});
+        config.preload.textures.push({id:"assets/fist.png"});
+        config.preload.textures.push({id:"assets/fist.png"});
 
         config.preload.jsons.push({id:"assets/playerAnimations.json"});
+        config.preload.jsons.push({id:"assets/fistAnimations.json"});
 
         return config;
 
@@ -48,14 +50,20 @@ class Main extends luxe.Game {
         Luxe.input.bind_key('fire', Key.space); // keyboard
         Luxe.input.bind_key('p1left', Key.left); 
         Luxe.input.bind_key('p1right', Key.right);
-
+        Luxe.input.bind_key('p1jump', Key.up);
         Luxe.input.bind_key('p1fistleft', Key.key_q); 
         Luxe.input.bind_key('p1fistright', Key.key_w);
 
-        Luxe.input.bind_key('p1jump', Key.up);
+        // Luxe.input.bind_key('p1jump', Key.up);
 
 
-        Luxe.input.bind_gamepad('fire',1);
+        Luxe.input.bind_gamepad('p1fistleft', 9, 0);
+        Luxe.input.bind_gamepad('p1fistright', 10, 0);
+        Luxe.input.bind_gamepad('p1jump', 0, 0);
+
+        
+
+
 
 
         //set constants

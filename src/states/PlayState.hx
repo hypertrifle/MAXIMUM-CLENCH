@@ -35,6 +35,8 @@ override function init() {
     override function onenter<T>( _data:T ) {
         trace("Play ENTER");
 
+        Luxe.events.listen("fist.punch",fistSmash);
+
         //build our planet?
 
         // var world = Luxe.
@@ -74,6 +76,11 @@ override function init() {
 
 
     } //onenter
+
+    public function fistSmash(data:Dynamic){
+        trace("smash", data);
+        Luxe.camera.shake(0.8*data.power);
+    }
 
     override function onleave<T>( _data:T ) {
         trace("Play LEAVE");

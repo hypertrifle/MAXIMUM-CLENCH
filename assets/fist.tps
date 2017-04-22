@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.4.0</string>
         <key>fileName</key>
-        <string>/Users/rich/Development/Luxe/LD38/assets/textures.tps</string>
+        <string>/Users/rich/Development/Luxe/LD38/assets/fist.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
