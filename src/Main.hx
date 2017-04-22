@@ -35,7 +35,8 @@ class Main extends luxe.Game {
         config.preload.textures.push({id:"assets/players.png"});
 
         config.preload.textures.push({id:"assets/fist.png"});
-        config.preload.textures.push({id:"assets/fist.png"});
+        config.preload.textures.push({id:"assets/blood.png"});
+        config.preload.textures.push({id:"assets/planet/planet_000.png"});
 
         config.preload.jsons.push({id:"assets/playerAnimations.json"});
         config.preload.jsons.push({id:"assets/fistAnimations.json"});
@@ -104,6 +105,15 @@ class Main extends luxe.Game {
 
         if(event.keycode == Key.escape) {
             Luxe.shutdown();
+        }
+
+        if(event.keycode == Key.space) {
+            // machine.destroy();
+            // machine = new States({ name:'statemachine' });
+            // machine.add(new MenuState({ name:'menu', game:this }));
+            // machine.add(new PlayState({ name:'play', game:this }));
+            // //goto our tests state
+            // machine.set('play');
         }
 
     } //onkeyup

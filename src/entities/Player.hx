@@ -50,7 +50,7 @@ class Player extends Sprite {
     public var jumping:Bool = false;
     public var dashing:Bool = false;
     
-
+    public var dead:Bool = false;
 
 public function new(options:PlayerOptions){
 
@@ -75,7 +75,7 @@ public function new(options:PlayerOptions){
         events.listen("dash.coolend", dashEndAfterCooldown);
 
         events.listen('*', function(e){
-            trace( e.event );
+            // trace( e.event );
         });
 
 }
@@ -135,6 +135,16 @@ override function init(){
 
 public function endJump(){
     jumping = false;
+}
+
+public function hit(){
+    visible = false;
+    dead = true;
+    Actuate.timer(2).onComplete(function(){
+        rotation_z = Math.random()*360;
+        visible = true;
+        dead = false;
+    });
 }
   
   override function update(dt:Float){
@@ -268,7 +278,7 @@ public function endJump(){
        Luxe.events.fire("fist.punch",{power:fistPower, player:playerNumber, angle: fist.rotation_z});
        fistPower = 0;
 
-      Actuate.tween(fist.origin,0.3,{y:512+Contants.worldSize+128},true);
+      Actuate.tween(fist.origin,1,{y:512+Contants.worldSize+128},true);
   }
 
   public function smash(){
