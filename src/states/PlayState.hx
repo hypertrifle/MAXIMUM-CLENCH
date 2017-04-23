@@ -40,6 +40,9 @@ class PlayState extends State {
     public var pickup_pool:Array<Pickup>;
     public var pickup_dead_pool:Array<Int>;
 
+    public var playerOneScore:Int = 0;
+    public var playerTwoScore:Int = 0;
+
 public function new(_config:Dynamic){
     super(_config);
         pickup_dead_pool = new Array<Int>();
@@ -76,6 +79,8 @@ override function init() {
 
     override function onenter<T>( _data:T ) {
         trace("Play ENTER");
+
+        playerOneScore = playerTwoScore = 0;
 
         Luxe.events.listen("fist.punch",fistSmash);
 
@@ -129,7 +134,6 @@ override function init() {
 
         text.texture.filter_mag = FilterType.nearest;
 
-
         ready = true;
 
 
@@ -154,11 +158,41 @@ override function init() {
             trace("kill green");
             spawnBlood(PlayerOne.rotation_z);
             PlayerOne.hit();
+            
+            if(data.player == 1){
+                playerOneScore --;
+            } else {
+                playerTwoScore ++;
+            }
+            updateScores();
+            
         }
         if(!PlayerTwo.dead && p2angle < max && p2angle > min  ){
             spawnBlood(PlayerTwo.rotation_z);
             PlayerTwo.hit();
+            
+            if(data.player == 1){
+                playerOneScore ++;
+            } else {
+                playerTwoScore --;
+            }
+            updateScores();
         }
+    }
+
+    public function updateScores(){
+        if(playerOneScore < 0){ playerOneScore = 0;}
+        if(playerTwoScore < 0){ playerTwoScore = 0;}
+
+        if(playerOneScore == 5){ win(1); }
+        if(playerTwoScore == 5){ win(2); }
+
+        PlayerOne.hudanim.animation = ""+playerOneScore;
+        PlayerTwo.hudanim.animation = ""+playerTwoScore;
+    }
+
+    public function win(player:Int){
+        trace("player "+ player+ " win");
     }
 
     public function normaliseAngle(angle:Float){

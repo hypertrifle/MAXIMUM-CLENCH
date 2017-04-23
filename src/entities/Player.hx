@@ -36,6 +36,9 @@ class Player extends Sprite {
     private var ACCELLERATION:Float = 1200;
     private var DECELERATION:Float = 600;
 
+    private var hud:Sprite;
+    public var hudanim:SpriteAnimation;
+
 
     public var worldPosition:Vector;
 
@@ -100,9 +103,9 @@ override function init(){
 
     fistVelocity = 0;
     fistPosition = 0;
-    if(playerNumber > 0){
-        worldPosition.x += playerNumber *100;
-        fistPosition += playerNumber *100;
+    if(playerNumber > 1){
+        worldPosition.x += playerNumber *200;
+        fistPosition += playerNumber *200;
     }
 
 
@@ -152,7 +155,71 @@ override function init(){
 
     animations.play();
 
+    var hud_texture = Luxe.resources.texture("assets/hud.png");
+    hud = new Sprite({
+            name:'player'+playerNumber+'hud',
+            pos : Luxe.screen.mid,
+            texture:hud_texture,
+            scale: new Vector(1,1,1),
+            size : new Vector(400,400),
+            origin: new Vector(200,200,0),
+            depth:25
+    });
+
+
+    hudanim = new SpriteAnimation({ name:'anim' });
+    hud.add(hudanim);
+    hudanim.add_from_json('
+            {
+                "0" : {
+                    "frame_size":{ "x":"400", "y":"400" },
+                    "frameset": ["1"],
+                    "loop": "true",
+                    "speed": "1"
+                },
+                "1" : {
+                    "frame_size":{ "x":"400", "y":"400" },
+                    "frameset": ["2"],
+                    "loop": "true",
+                    "speed": "1"
+                },
+                "2" : {
+                    "frame_size":{ "x":"400", "y":"400" },
+                    "frameset": ["3"],
+                    "loop": "true",
+                    "speed": "1"
+                },
+                "3" : {
+                    "frame_size":{ "x":"400", "y":"400" },
+                    "frameset": ["4"],
+                    "loop": "true",
+                    "speed": "1"
+                },
+                "4" : {
+                    "frame_size":{ "x":"400", "y":"400" },
+                    "frameset": ["5"],
+                    "loop": "true",
+                    "speed": "1"
+                },
+                "5" : {
+                    "frame_size":{ "x":"400", "y":"400" },
+                    "frameset": ["6"],
+                    "loop": "true",
+                    "speed": "1"
+                }
+            }
+        ');
+    hudanim.animation = "0";
+    hudanim.play();
+
+    if(playerNumber == 1){
+        hud.flipx = true;
+    }
+
     ready = true;
+
+
+
     
 }
 
