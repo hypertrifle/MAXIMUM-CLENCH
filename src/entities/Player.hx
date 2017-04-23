@@ -242,6 +242,8 @@ public function score(){
 
     energy =Math.min(0.1+energy, 1);
     updateEnergyBar();
+
+    Main.playSound("pickup1");
 }
 
 
@@ -263,7 +265,8 @@ public function updateEnergyBar(){
       
       //input
         if(Luxe.input.inputpressed('p'+playerNumber+'jump') && !jumping && !dizzy){
-            
+            Main.playSound("jump");
+
             playAnimation("jump");
             jumping = true;
             jumpVelocity = 400;
@@ -285,6 +288,9 @@ public function updateEnergyBar(){
                 velocity = flipx? 600 : -600;
                 playAnimation("dash");
             }
+        
+            Main.playSound("dash");
+
             dashing = true;
         }
 
@@ -426,7 +432,8 @@ public function dashEndAfterCooldown(_:Dynamic):Void{
 }
 
 public function setDizzy(){
-    // trace("im dizzy"+playerNumber);
+     Main.playSound("playerhit");
+  // trace("im dizzy"+playerNumber);
     dashing = false;
     dizzy = true;
     // color.a = 0.5;

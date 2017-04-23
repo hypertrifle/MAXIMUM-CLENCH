@@ -180,28 +180,40 @@ override function init() {
         var p2angle = normaliseAngle(PlayerTwo.rotation_z);
 
         spawnImpact(angle);
+        Main.playSound("punch");
+
 
         if(!PlayerOne.dead && p1angle < max && p1angle > min  ){
             trace("kill green");
             spawnBlood(PlayerOne.rotation_z);
+            Main.playSound("playerhit");
+
             PlayerOne.hit();
             
             if(data.player == 1){
                 playerOneScore --;
+                Main.playSound("scoredown");
             } else {
                 playerTwoScore ++;
+                Main.playSound("scoreup");
+                
             }
             updateScores();
             
         }
         if(!PlayerTwo.dead && p2angle < max && p2angle > min  ){
+            Main.playSound("playerhit");
             spawnBlood(PlayerTwo.rotation_z);
             PlayerTwo.hit();
             
             if(data.player == 1){
                 playerOneScore ++;
+                Main.playSound("scoreup");
+                
             } else {
                 playerTwoScore --;
+                Main.playSound("scoredown");
+                
             }
             updateScores();
         }

@@ -11,6 +11,7 @@ import phoenix.BitmapFont;
 import luxe.importers.texturepacker.TexturePackerData;
 import luxe.importers.texturepacker.TexturePackerJSON;
 import luxe.importers.texturepacker.TexturePackerSpriteAnimation;
+import luxe.resource.Resource.AudioResource;
 
 
 import states.*;
@@ -21,6 +22,8 @@ class Main extends luxe.Game {
     public static var atlasTexture:Texture;
     public static var atlasData:Dynamic;
     public static var font:BitmapFont;
+
+    public var music:AudioResource;
 
     override function config(config:GameConfig) {
 
@@ -44,6 +47,18 @@ class Main extends luxe.Game {
         config.preload.textures.push({id:"assets/pickup.png"});
         config.preload.textures.push({id:"assets/blood.png"});
         config.preload.textures.push({id:"assets/planet/planet_000.png"});
+
+
+        config.preload.sounds.push({id:"assets/Sound/music.ogg",is_stream:false});
+
+        config.preload.sounds.push({id:"assets/Sound/dash.wav",is_stream:false});
+        config.preload.sounds.push({id:"assets/Sound/jump.wav",is_stream:false});
+        config.preload.sounds.push({id:"assets/Sound/pickup1.wav",is_stream:false});
+        config.preload.sounds.push({id:"assets/Sound/pickup2.wav",is_stream:false});
+        config.preload.sounds.push({id:"assets/Sound/playerhit.wav",is_stream:false});
+        config.preload.sounds.push({id:"assets/Sound/punch.wav",is_stream:false});
+        config.preload.sounds.push({id:"assets/Sound/scoredown.wav",is_stream:false});
+        config.preload.sounds.push({id:"assets/Sound/scoreup.wav",is_stream:false});
 
         config.preload.jsons.push({id:"assets/playerAnimations.json"});
         config.preload.jsons.push({id:"assets/fistAnimations.json"});
@@ -108,8 +123,17 @@ class Main extends luxe.Game {
         //goto our tests state
         machine.set('play');
 
+        music = Luxe.resources.audio('assets/Sound/music.ogg');
+        Luxe.audio.play(music.source, 0.2);
+
 
     } //ready
+
+    public static function playSound(ref:String){
+        var snd = Luxe.resources.audio('assets/Sound/'+ref+'.wav');
+        Luxe.audio.play(snd.source);
+
+    }
 
     override function onkeyup(event:KeyEvent) {
 
