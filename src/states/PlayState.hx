@@ -1,6 +1,6 @@
 package states;
 
-import entities.Player;
+import entities.*;
 
 import luxe.States;
 import luxe.Sprite;
@@ -37,11 +37,35 @@ class PlayState extends State {
 
     public var text:TextGeometry;
 
+    public var pickup_pool:Array<Pickup>;
+    public var pickup_dead_pool:Array<Int>;
+
 public function new(_config:Dynamic){
     super(_config);
+        pickup_dead_pool = new Array<Int>();
+        pickup_pool = new Array<Pickup>();
 
 
 }
+
+public function spawnPickup(){
+
+    var spr:Pickup;
+    if(pickup_dead_pool.length > 0){
+        //reuse old pickup
+        spr = pickup_pool[pickup_dead_pool.pop()];
+    } else {
+        //create new pickup
+        spr = new Pickup({i:pickup_pool.length});
+        pickup_pool.push(spr);
+    }
+
+    spr.spawn(Math.random()*360, Math.random()*60 + 20);
+
+    
+
+}
+
 
 override function init() {
         trace("Play inited");
@@ -89,7 +113,7 @@ override function init() {
         PlayerTwo = new Player({playerNumber:2});
        
 
-    
+       
         
 
         //now that we have some fonts, lets write something
@@ -203,8 +227,56 @@ override function init() {
     override function update(dt:Float){
         if(ready){
             // spr.rotation_z += 50 * dt;
-
+            overlapPickups();
+            addDeadPickupsToPool();
             handlePhysics();
+
+
+            if(pickup_pool.length - pickup_dead_pool.length < 5){
+                 spawnPickup();
+            }
+        }
+    }
+
+    public function overlapPickups(){
+        for(i in 0...pickup_pool.length){
+            var pu = pickup_pool[i];
+            if(!pu.dead && !pu.pickedUp){
+                if(overlap(PlayerOne, pu)){
+                    PlayerOne.score();
+                    pu.pickup();
+
+                }else if(overlap(PlayerTwo, pu)){
+                    PlayerTwo.score();
+                    pu.pickup();
+
+                }
+            }
+        }
+    }
+
+    public function overlap(player:Player, pickup:Pickup){
+        var xdif:Float = Math.abs( normaliseAngle(player.rotation_z) - normaliseAngle(pickup.rotation_z));
+        var ydif:Float = Math.abs( player.worldPosition.y - pickup.worldPosition.y);
+
+        if(xdif < 3 && ydif < 30){
+            trace(ydif);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function addDeadPickupsToPool(){
+        for(i in 0...pickup_pool.length){
+            var pu = pickup_pool[i];
+
+            if(pu.dead && pu.visible ){
+                trace("kill item");
+                pu.visible = false;
+                pickup_dead_pool.push(i);
+            }
         }
     }
 

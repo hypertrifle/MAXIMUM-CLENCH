@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.4.0</string>
         <key>fileName</key>
-        <string>/Users/rich/Development/Luxe/LD38/assets/textures.tps</string>
+        <string>/Users/rich/Development/Luxe/LD38/assets/pickup.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename>players.png</filename>
+        <filename>pickup.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -119,7 +119,7 @@
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
@@ -193,88 +193,58 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">textures_src/0idle/0idle_000.png</key>
-            <key type="filename">textures_src/0idle/0idle_001.png</key>
-            <key type="filename">textures_src/0idle/0idle_002.png</key>
-            <key type="filename">textures_src/0idle/0idle_003.png</key>
-            <key type="filename">textures_src/0idle/0idle_004.png</key>
-            <key type="filename">textures_src/0idle/0idle_005.png</key>
-            <key type="filename">textures_src/0idle/0idle_006.png</key>
-            <key type="filename">textures_src/0idle/0idle_007.png</key>
-            <key type="filename">textures_src/0idle/0idle_008.png</key>
-            <key type="filename">textures_src/0idle/0idle_009.png</key>
-            <key type="filename">textures_src/0idle/0idle_010.png</key>
-            <key type="filename">textures_src/0idle/0idle_011.png</key>
-            <key type="filename">textures_src/1jump/1jump_000.png</key>
-            <key type="filename">textures_src/1jump/1jump_001.png</key>
-            <key type="filename">textures_src/1jump/1jump_002.png</key>
-            <key type="filename">textures_src/1jump/1jump_003.png</key>
-            <key type="filename">textures_src/1jump/1jump_004.png</key>
-            <key type="filename">textures_src/1jump/1jump_005.png</key>
-            <key type="filename">textures_src/1jump/1jump_006.png</key>
-            <key type="filename">textures_src/1jump/1jump_007.png</key>
-            <key type="filename">textures_src/1jump/1jump_008.png</key>
-            <key type="filename">textures_src/1jump/1jump_009.png</key>
-            <key type="filename">textures_src/1jump/1jump_010.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_000.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_001.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_002.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_003.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_004.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_005.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_006.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_007.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_008.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_009.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_010.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_011.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_012.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_013.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_014.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_015.png</key>
-            <key type="filename">textures_src/3dash/3dash_000.png</key>
-            <key type="filename">textures_src/3dash/3dash_001.png</key>
-            <key type="filename">textures_src/3dash/3dash_002.png</key>
-            <key type="filename">textures_src/3dash/3dash_003.png</key>
-            <key type="filename">textures_src/3dash/3dash_004.png</key>
-            <key type="filename">textures_src/3dash/3dash_005.png</key>
-            <key type="filename">textures_src/3dash/3dash_006.png</key>
-            <key type="filename">textures_src/3dash/3dash_007.png</key>
-            <key type="filename">textures_src/3dash/3dash_008.png</key>
-            <key type="filename">textures_src/3dash/3dash_009.png</key>
-            <key type="filename">textures_src/3dash/3dash_010.png</key>
-            <key type="filename">textures_src/4stun/4stun_000.png</key>
-            <key type="filename">textures_src/4stun/4stun_001.png</key>
-            <key type="filename">textures_src/4stun/4stun_002.png</key>
-            <key type="filename">textures_src/4stun/4stun_003.png</key>
-            <key type="filename">textures_src/4stun/4stun_004.png</key>
-            <key type="filename">textures_src/4stun/4stun_005.png</key>
-            <key type="filename">textures_src/4stun/4stun_006.png</key>
-            <key type="filename">textures_src/4stun/4stun_007.png</key>
-            <key type="filename">textures_src/4stun/4stun_008.png</key>
-            <key type="filename">textures_src/4stun/4stun_009.png</key>
-            <key type="filename">textures_src/4stun/4stun_010.png</key>
-            <key type="filename">textures_src/4stun/4stun_011.png</key>
+            <key type="filename">pickup/pickup_000.png</key>
+            <key type="filename">pickup/pickup_001.png</key>
+            <key type="filename">pickup/pickup_002.png</key>
+            <key type="filename">pickup/pickup_003.png</key>
+            <key type="filename">pickup/pickup_004.png</key>
+            <key type="filename">pickup/pickup_005.png</key>
+            <key type="filename">pickup/pickup_006.png</key>
+            <key type="filename">pickup/pickup_007.png</key>
+            <key type="filename">pickup/pickup_008.png</key>
+            <key type="filename">pickup/pickup_009.png</key>
+            <key type="filename">pickup/pickup_010.png</key>
+            <key type="filename">pickup/pickup_011.png</key>
+            <key type="filename">pickup/pickup_012.png</key>
+            <key type="filename">pickup/pickup_013.png</key>
+            <key type="filename">pickup/pickup_014.png</key>
+            <key type="filename">pickup/pickup_015.png</key>
+            <key type="filename">pickup/pickup_016.png</key>
+            <key type="filename">pickup/pickup_017.png</key>
+            <key type="filename">pickup/pickup_018.png</key>
+            <key type="filename">pickup/pickup_019.png</key>
+            <key type="filename">pickup/pickup_020.png</key>
+            <key type="filename">pickup/pickup_021.png</key>
+            <key type="filename">pickup/pickup_022.png</key>
+            <key type="filename">pickup/pickup_023.png</key>
+            <key type="filename">pickup/pickup_024.png</key>
+            <key type="filename">pickup/pickup_025.png</key>
+            <key type="filename">pickup/pickup_026.png</key>
+            <key type="filename">pickup/pickup_027.png</key>
+            <key type="filename">pickup/pickup_028.png</key>
+            <key type="filename">pickup/pickup_029.png</key>
+            <key type="filename">pickup/pickup_030.png</key>
+            <key type="filename">pickup/pickup_031.png</key>
+            <key type="filename">pickup/pickup_032.png</key>
+            <key type="filename">pickup/pickup_033.png</key>
+            <key type="filename">pickup/pickup_034.png</key>
+            <key type="filename">pickup/pickup_035.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>16,16,32,32</rect>
+                <rect>8,8,16,16</rect>
                 <key>scale9Paddings</key>
-                <rect>16,16,32,32</rect>
+                <rect>8,8,16,16</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>textures_src/0idle</filename>
-            <filename>textures_src/1jump</filename>
-            <filename>textures_src/2p1run</filename>
-            <filename>textures_src/3dash</filename>
-            <filename>textures_src/4stun</filename>
+            <filename>pickup</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

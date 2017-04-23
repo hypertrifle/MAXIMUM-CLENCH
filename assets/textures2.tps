@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.4.0</string>
         <key>fileName</key>
-        <string>/Users/rich/Development/Luxe/LD38/assets/textures.tps</string>
+        <string>/Users/rich/Development/Luxe/LD38/assets/textures2.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename>players.png</filename>
+        <filename>player2.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -193,68 +193,68 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">textures_src/0idle/0idle_000.png</key>
-            <key type="filename">textures_src/0idle/0idle_001.png</key>
-            <key type="filename">textures_src/0idle/0idle_002.png</key>
-            <key type="filename">textures_src/0idle/0idle_003.png</key>
-            <key type="filename">textures_src/0idle/0idle_004.png</key>
-            <key type="filename">textures_src/0idle/0idle_005.png</key>
-            <key type="filename">textures_src/0idle/0idle_006.png</key>
-            <key type="filename">textures_src/0idle/0idle_007.png</key>
-            <key type="filename">textures_src/0idle/0idle_008.png</key>
-            <key type="filename">textures_src/0idle/0idle_009.png</key>
-            <key type="filename">textures_src/0idle/0idle_010.png</key>
-            <key type="filename">textures_src/0idle/0idle_011.png</key>
-            <key type="filename">textures_src/1jump/1jump_000.png</key>
-            <key type="filename">textures_src/1jump/1jump_001.png</key>
-            <key type="filename">textures_src/1jump/1jump_002.png</key>
-            <key type="filename">textures_src/1jump/1jump_003.png</key>
-            <key type="filename">textures_src/1jump/1jump_004.png</key>
-            <key type="filename">textures_src/1jump/1jump_005.png</key>
-            <key type="filename">textures_src/1jump/1jump_006.png</key>
-            <key type="filename">textures_src/1jump/1jump_007.png</key>
-            <key type="filename">textures_src/1jump/1jump_008.png</key>
-            <key type="filename">textures_src/1jump/1jump_009.png</key>
-            <key type="filename">textures_src/1jump/1jump_010.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_000.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_001.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_002.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_003.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_004.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_005.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_006.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_007.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_008.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_009.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_010.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_011.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_012.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_013.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_014.png</key>
-            <key type="filename">textures_src/2p1run/2p1run_015.png</key>
-            <key type="filename">textures_src/3dash/3dash_000.png</key>
-            <key type="filename">textures_src/3dash/3dash_001.png</key>
-            <key type="filename">textures_src/3dash/3dash_002.png</key>
-            <key type="filename">textures_src/3dash/3dash_003.png</key>
-            <key type="filename">textures_src/3dash/3dash_004.png</key>
-            <key type="filename">textures_src/3dash/3dash_005.png</key>
-            <key type="filename">textures_src/3dash/3dash_006.png</key>
-            <key type="filename">textures_src/3dash/3dash_007.png</key>
-            <key type="filename">textures_src/3dash/3dash_008.png</key>
-            <key type="filename">textures_src/3dash/3dash_009.png</key>
-            <key type="filename">textures_src/3dash/3dash_010.png</key>
-            <key type="filename">textures_src/4stun/4stun_000.png</key>
-            <key type="filename">textures_src/4stun/4stun_001.png</key>
-            <key type="filename">textures_src/4stun/4stun_002.png</key>
-            <key type="filename">textures_src/4stun/4stun_003.png</key>
-            <key type="filename">textures_src/4stun/4stun_004.png</key>
-            <key type="filename">textures_src/4stun/4stun_005.png</key>
-            <key type="filename">textures_src/4stun/4stun_006.png</key>
-            <key type="filename">textures_src/4stun/4stun_007.png</key>
-            <key type="filename">textures_src/4stun/4stun_008.png</key>
-            <key type="filename">textures_src/4stun/4stun_009.png</key>
-            <key type="filename">textures_src/4stun/4stun_010.png</key>
-            <key type="filename">textures_src/4stun/4stun_011.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_000.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_001.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_002.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_003.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_004.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_005.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_006.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_007.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_008.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_009.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_010.png</key>
+            <key type="filename">textures_src/6idle2/0idle2_011.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_000.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_001.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_002.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_003.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_004.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_005.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_006.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_007.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_008.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_009.png</key>
+            <key type="filename">textures_src/7jump2/1jump2_010.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_000.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_001.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_002.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_003.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_004.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_005.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_006.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_007.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_008.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_009.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_010.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_011.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_012.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_013.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_014.png</key>
+            <key type="filename">textures_src/8p1run2/2p1run2_015.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_000.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_001.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_002.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_003.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_004.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_005.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_006.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_007.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_008.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_009.png</key>
+            <key type="filename">textures_src/9dash2/3dash2_010.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_000.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_001.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_002.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_003.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_004.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_005.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_006.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_007.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_008.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_009.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_010.png</key>
+            <key type="filename">textures_src/9zstun2/4 stun2_011.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -270,11 +270,11 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>textures_src/0idle</filename>
-            <filename>textures_src/1jump</filename>
-            <filename>textures_src/2p1run</filename>
-            <filename>textures_src/3dash</filename>
-            <filename>textures_src/4stun</filename>
+            <filename>textures_src/6idle2</filename>
+            <filename>textures_src/7jump2</filename>
+            <filename>textures_src/8p1run2</filename>
+            <filename>textures_src/9dash2</filename>
+            <filename>textures_src/9zstun2</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -1,6 +1,7 @@
 package entities;
 
 import luxe.Sprite;
+import luxe.Color;
 import luxe.options.SpriteOptions;
 import luxe.Vector;
 import phoenix.Texture;
@@ -21,7 +22,7 @@ class Player extends Sprite {
 
     public var playerNumber:Int;
 
-
+    public var energy:Float = 0;
 
     public var texture_src:Texture;
 
@@ -41,6 +42,7 @@ class Player extends Sprite {
     public var ready:Bool = false;
 
     public var fist:Sprite;
+    public var powerBar:Sprite;
     public var fistPosition:Float;
     public var fistVelocity:Float;
 
@@ -60,7 +62,13 @@ public function new(options:PlayerOptions){
         this.playerNumber = options.playerNumber;
     }
 
-    texture_src = Luxe.resources.texture('assets/players.png');
+    if(this.playerNumber == 1){
+        texture_src = Luxe.resources.texture('assets/players.png');
+
+    } else {
+        texture_src = Luxe.resources.texture('assets/player2.png');
+        
+    }
     texture_src.filter_mag = FilterType.nearest;
     super({
             name:'player'+playerNumber,
@@ -108,9 +116,22 @@ override function init(){
             scale: new Vector(1,1,1),
             size : new Vector(256,512),
             origin: new Vector(128,512+Contants.worldSize+128,0),
-            depth:2
+            depth:2*playerNumber
             // centered: true,
         });
+        //78 x 7
+
+    var bar_text = Luxe.resources.texture("assets/bar.png");
+    powerBar = new Sprite({
+            name:'player'+playerNumber+'power',
+            pos : Luxe.screen.mid,
+            texture:bar_text,
+            scale: new Vector(0,1,1),
+            size : new Vector(78,7),
+            origin: new Vector(78/2 - 13,0,0),
+            depth:4*playerNumber,
+            color:new Color().rgb(0xfcc53a)
+    });
 
     var fistAnimationsData = Luxe.resources.json('assets/fistAnimations.json').asset.json;
     var fistanimations = new SpriteAnimation({ name:'anim' });
@@ -147,6 +168,19 @@ public function hit(){
         visible = true;
         dead = false;
     });
+}
+
+public function score(){
+    trace("PICKUP!");
+
+    energy =Math.min(0.1+energy, 1);
+    updateEnergyBar();
+}
+
+
+public function updateEnergyBar(){
+    Actuate.tween(powerBar.scale, 0.4,{x:energy},true);
+    // powerBar.scale.x = energy;
 }
   
   override function update(dt:Float){
@@ -269,15 +303,16 @@ public function hit(){
         var worldFistPositionScaled = fistPosition / 25; // scaled better so world circumfrence is position 0-1
 
 
-         fist.rotation_z = Math.PI*2 * worldFistPositionScaled;
+         powerBar.origin.y = fist.origin.y-342;
+         fist.rotation_z = powerBar.rotation_z = Math.PI*2 * worldFistPositionScaled;
          this.rotation_z = Math.PI*2 * worldPositionScaled;
 
   }//update
 
   public function playAnimation(ref:String){
-      if((animations.animation != ref+playerNumber) && !dashing && (!jumping || ref == "dash" )){
+      if((animations.animation != ref) && !dashing && (!jumping || ref == "dash" )){
         //   trace(ref);
-        animations.animation = ref+playerNumber;        
+        animations.animation = ref;        
       }
 
   }
@@ -306,16 +341,16 @@ public function dashEndAfterCooldown(_:Dynamic):Void{
 }
 
 public function setDizzy(){
-    trace("im dizzy"+playerNumber);
+    // trace("im dizzy"+playerNumber);
     dashing = false;
     dizzy = true;
     // color.a = 0.5;
-    animations.animation = "idle"+playerNumber;
+    animations.animation = "dizzy";
     // this.worldPosition.y = 0;
     this.velocity = 0;
     // origin.y = 64+Contants.worldSize + worldPosition.y;
 
-    Actuate.timer(1).onComplete (function(){
+    Actuate.timer(3).onComplete (function(){
         dizzy = false;
         color.a = 1;
         

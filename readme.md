@@ -3,11 +3,11 @@
 ## HT x CM
 
 ###todo
-- collisions between players
-- knocking down of players
+- collisions between players - DONE
+- knocking down of players - DONE (anims)
 - Sounds / Music
-- fist fuel (varibles and display)
-- collectables
+- fist fuel (varibles and display) - 
+- collectables - DONE
 - terrain
 - tweak cooldowns on abilities
 - cracking & skull polish
