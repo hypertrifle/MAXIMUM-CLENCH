@@ -22,7 +22,7 @@ class Player extends Sprite {
 
     public var playerNumber:Int;
 
-    public var energy:Float = 1;
+    public var energy:Float = 0;
 
     public var texture_src:Texture;
 

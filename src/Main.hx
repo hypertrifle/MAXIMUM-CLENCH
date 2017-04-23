@@ -124,7 +124,8 @@ class Main extends luxe.Game {
         machine.set('play');
 
         music = Luxe.resources.audio('assets/Sound/music.ogg');
-        Luxe.audio.play(music.source, 0.2);
+        
+        Luxe.audio.loop(music.source, 0.2);
 
 
     } //ready
@@ -142,12 +143,12 @@ class Main extends luxe.Game {
         }
 
         if(event.keycode == Key.space) {
-            machine.destroy();
-            machine = new States({ name:'statemachine' });
-            machine.add(new MenuState({ name:'menu', game:this }));
-            machine.add(new PlayState({ name:'play', game:this }));
-            //goto our tests state
-            machine.set('play');
+            // machine.destroy();
+            // machine = new States({ name:'statemachine' });
+            // machine.add(new MenuState({ name:'menu', game:this }));
+            // machine.add(new PlayState({ name:'play', game:this }));
+            // //goto our tests state
+            // machine.set('play');
         }
 
     } //onkeyup
