@@ -43,10 +43,16 @@ class PlayState extends State {
     public var playerOneScore:Int = 0;
     public var playerTwoScore:Int = 0;
 
+    public var stars:Array<Sprite>;
+
+    public var starDirection:Vector;
+
 public function new(_config:Dynamic){
     super(_config);
         pickup_dead_pool = new Array<Int>();
         pickup_pool = new Array<Pickup>();
+        stars = new Array<Sprite>();
+        starDirection = new Vector(50,100);
 
 
 }
@@ -84,6 +90,19 @@ override function init() {
 
         Luxe.events.listen("fist.punch",fistSmash);
 
+        var starTexture = Luxe.resources.texture("assets/star.png");
+
+        for(i in 0...200){
+            var scale = 1 / Luxe.utils.random.int(1,5);
+            var star = new Sprite({
+                pos:new Vector(Math.random()*Luxe.screen.width,Math.random()*Luxe.screen.height),
+                scale: new Vector(scale,scale,1),
+                texture:starTexture,
+                depth:0
+            });
+            stars.push(star);
+        }
+
         bloodTexture = Luxe.resources.texture("assets/blood.png");
         bloodTexture.filter_mag = FilterType.nearest;
 
@@ -100,7 +119,8 @@ override function init() {
         world = new Sprite({
             texture: world_texture,
             pos: Luxe.screen.mid,
-            centered:true
+            centered:true,
+            depth:1
         });
 
 
@@ -269,7 +289,23 @@ override function init() {
             if(pickup_pool.length - pickup_dead_pool.length < 5){
                  spawnPickup();
             }
-        }
+
+
+            //update start field
+            for(i in 0...stars.length){
+                var st = stars[i];
+                st.pos.x += starDirection.x*st.scale.x*dt;
+                st.pos.y += starDirection.y*st.scale.y*dt;
+
+                if(st.pos.x < 0){ st.pos.x += Luxe.screen.width; }
+                if(st.pos.x > Luxe.screen.width){ st.pos.x -= Luxe.screen.width; }
+
+                if(st.pos.y < 0){ st.pos.y += Luxe.screen.height; }
+                if(st.pos.y > Luxe.screen.height){ st.pos.y -= Luxe.screen.height; }
+
+                }
+            }
+        
     }
 
     public function overlapPickups(){
