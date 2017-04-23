@@ -318,26 +318,44 @@ public function updateEnergyBar(){
         }
 
         //input fist
-        if(Luxe.input.inputdown("p"+playerNumber+"fistleft") && Luxe.input.inputdown("p"+playerNumber+"fistright")){
-            //fist being pulled back
-            fistVelocity = 0;
-            fistPulling = true;
-            fistPower += 20*dt;
-            this.fist.origin.y = 512+Contants.worldSize+128 + fistPower;
+        if( Luxe.input.inputdown("p"+playerNumber+"fistleft") && Luxe.input.inputdown("p"+playerNumber+"fistright")){
+            
+            if(energy > 0.3){
+                //fist being pulled back
+                fistVelocity = 0;
+                fistPulling = true;
+                fistPower += 20*dt;
+                this.fist.origin.y = 512+Contants.worldSize+128 + fistPower;
+            }
 
-        }else if(Luxe.input.inputdown("p"+playerNumber+"fistleft")){
+        }else if(energy > 0.01*dt && Luxe.input.inputdown("p"+playerNumber+"fistleft")){
+            energy -= 0.01*dt;
+            updateEnergyBar();
             fistVelocity -=ACCELLERATION*dt;
             if(fistVelocity < -maxSpeed/2) fistVelocity = -maxSpeed/2;
-        } else if (Luxe.input.inputdown("p"+playerNumber+"fistright")){
+        } else if (energy > 0.01*dt &&Luxe.input.inputdown("p"+playerNumber+"fistright")){
+            energy -= 0.01*dt;
+            updateEnergyBar();
             fistVelocity +=ACCELLERATION*dt;
             if(fistVelocity > maxSpeed/2) fistVelocity = maxSpeed/2;
         }  else if(fistPulling){
+            energy -= 0.3;
+            updateEnergyBar();
             //do a punch
             fistPulling = false;
             Actuate.tween(fist.origin,0.1,{y:512+Contants.worldSize},true).onComplete(resetFist);
 
 
-        } 
+        } else {
+            var vec = Math.min(Math.max(fistVelocity,-1), 1); // either 1 / -1;
+            if(Math.abs(fistVelocity) > (DECELERATION*dt)){
+                fistVelocity -= vec*(DECELERATION*dt);
+            } else {
+                fistVelocity = 0;
+                
+            }
+
+        }
 
 
 
