@@ -118,24 +118,13 @@ override function init() {
 
         //lets see if we hit anyone
 
-        var angle = data.angle % 360;
-        if(angle < 0){
-            angle += 360;
-        }
+        var angle = normaliseAngle(data.angle);
 
         var min = angle - ((50/Contants.worldCirc)*360);
         var max = angle + ((50/Contants.worldCirc)*360);
 
-        trace("angleNorm", angle);
-        trace("anglep1", PlayerOne.rotation_z% 360);
-        trace("anglep2", PlayerTwo.rotation_z% 360);
-        trace("+/-", ((50/Contants.worldCirc)*360));
-
-        var p1angle = PlayerOne.rotation_z% 360;
-        if(p1angle < 0 ){ p1angle += 360; }
-
-        var p2angle = PlayerTwo.rotation_z% 360;
-        if(p2angle < 0 ){ p2angle += 360; }
+        var p1angle = normaliseAngle(PlayerOne.rotation_z);
+        var p2angle = normaliseAngle(PlayerTwo.rotation_z);
 
         if(!PlayerOne.dead && p1angle < max && p1angle > min  ){
             trace("kill green");
@@ -146,12 +135,11 @@ override function init() {
             spawnBlood(PlayerTwo.rotation_z);
             PlayerTwo.hit();
         }
+    }
 
-
-        //  var destination = new Vector(Math.cos((data.angle/57.2958)-90)*100, Math.sin((data.angle/57.2958)-90)*100);
-        // Actuate.tween(Luxe.camera.pos,0.4,{x:Luxe.camera.pos.x+ destination.x,y:Luxe.camera.pos.y+ destination.y},true).onComplete(returnCamera);
-    
-        // spawnBlood(data.angle);
+    public function normaliseAngle(angle:Float){
+        var an = angle%360;
+        return (an <0)? an +360 : an;
     }
 
     public function spawnBlood(angle:Float){
@@ -215,7 +203,55 @@ override function init() {
     override function update(dt:Float){
         if(ready){
             // spr.rotation_z += 50 * dt;
+
+            handlePhysics();
         }
+    }
+
+    
+
+    public function handlePhysics(){
+        //check if players collide?
+        //player body width = 20; height = 50;
+
+        var xdif:Float = Math.abs( normaliseAngle(PlayerOne.rotation_z) - normaliseAngle(PlayerTwo.rotation_z));
+        
+        var ydif:Float = Math.abs( PlayerOne.worldPosition.y - PlayerTwo.worldPosition.y);
+
+        if(xdif < 5 && ydif < 50){
+
+            if(Math.abs(PlayerOne.velocity) == 600 && Math.abs(PlayerTwo.velocity) != 600 ){
+                PlayerTwo.setDizzy();
+            } else if(Math.abs(PlayerOne.velocity) != 600 && Math.abs(PlayerTwo.velocity) == 600 ){
+                PlayerOne.setDizzy();
+            } else if(Math.abs(PlayerOne.velocity) == 600 && Math.abs(PlayerTwo.velocity) == 600 ){
+                //one or more dashers.
+                if(PlayerOne.animations.frame > PlayerTwo.animations.frame && !PlayerTwo.dizzy){
+                    //playerone wins
+                    PlayerTwo.setDizzy();
+                } else if (!PlayerOne.dizzy) {
+                    //playertwo wins
+                    PlayerOne.setDizzy();
+                }
+            } else {
+                // else we need to seperate the players
+                var toSeperate = 5 - xdif;
+
+                if(normaliseAngle(PlayerOne.rotation_z) > normaliseAngle(PlayerTwo.rotation_z)){
+                    //player one is clockwise to player 2
+                    PlayerOne.worldPosition.x += toSeperate*2;
+                    PlayerTwo.worldPosition.x -= toSeperate*2;
+                } else {
+                    //player 2 is clockwise to player 1
+                    PlayerOne.worldPosition.x -= toSeperate*2;
+                    PlayerTwo.worldPosition.x += toSeperate*2;
+                }
+
+            }
+
+        }
+
+
     }
 
 }

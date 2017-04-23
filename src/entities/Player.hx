@@ -49,8 +49,10 @@ class Player extends Sprite {
 
     public var jumping:Bool = false;
     public var dashing:Bool = false;
+    public var dizzy:Bool = false;
     
     public var dead:Bool = false;
+    public var physicSize:Vector = new Vector(20,50); 
 
 public function new(options:PlayerOptions){
 
@@ -153,9 +155,13 @@ public function hit(){
       if(!ready){
           return;
       }
+
+    //   if(dizzy){
+    //       return;
+    //   }
       
       //input
-        if(Luxe.input.inputpressed('p'+playerNumber+'jump') && !jumping){
+        if(Luxe.input.inputpressed('p'+playerNumber+'jump') && !jumping && !dizzy){
             
             playAnimation("jump");
             jumping = true;
@@ -163,7 +169,7 @@ public function hit(){
             
         }
 
-        if(Luxe.input.inputdown('p'+playerNumber+'dash') && !dashing){
+        if(Luxe.input.inputdown('p'+playerNumber+'dash') && !dashing && !dizzy){
            
             if(!jumping){
                 //ground dash
@@ -181,7 +187,11 @@ public function hit(){
             dashing = true;
         }
 
-        if(dashing){
+        if(dashing || dizzy){
+
+        if(dizzy){
+            color.a = (color.a == 0.5)? 1 : 0.5;
+        }
 
         }else if(Luxe.input.inputdown('p'+playerNumber+'left') || Luxe.input.gamepadaxis(playerNumber - 1,0) < -0.3) {
             playAnimation("run");
@@ -266,7 +276,7 @@ public function hit(){
 
   public function playAnimation(ref:String){
       if((animations.animation != ref+playerNumber) && !dashing && (!jumping || ref == "dash" )){
-          trace(ref);
+        //   trace(ref);
         animations.animation = ref+playerNumber;        
       }
 
@@ -286,7 +296,6 @@ public function hit(){
   }
 
   public function dashEnd(_:Dynamic):Void{
-      trace("dash end");
       velocity = prevVelocity;
       if((velocity < 0 && flipx) || (velocity>0 && !flipx)){
           velocity *= -1;
@@ -294,6 +303,29 @@ public function hit(){
   }
 public function dashEndAfterCooldown(_:Dynamic):Void{
       dashing = false;
+}
+
+public function setDizzy(){
+    trace("im dizzy"+playerNumber);
+    dashing = false;
+    dizzy = true;
+    // color.a = 0.5;
+    animations.animation = "idle"+playerNumber;
+    // this.worldPosition.y = 0;
+    this.velocity = 0;
+    // origin.y = 64+Contants.worldSize + worldPosition.y;
+
+    Actuate.timer(1).onComplete (function(){
+        dizzy = false;
+        color.a = 1;
+        
+    });
+}
+
+override public function destroy(?_from_parent:Bool):Void{
+
+    fist.destroy();
+    super.destroy(_from_parent);
 }
   
 

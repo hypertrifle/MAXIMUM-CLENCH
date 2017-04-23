@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename>players.png</filename>
+        <filename>fist.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -193,61 +193,46 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">textures_src/idle/idle_000.png</key>
-            <key type="filename">textures_src/idle/idle_001.png</key>
-            <key type="filename">textures_src/idle/idle_002.png</key>
-            <key type="filename">textures_src/idle/idle_003.png</key>
-            <key type="filename">textures_src/idle/idle_004.png</key>
-            <key type="filename">textures_src/idle/idle_005.png</key>
-            <key type="filename">textures_src/idle/idle_006.png</key>
-            <key type="filename">textures_src/idle/idle_007.png</key>
-            <key type="filename">textures_src/idle/idle_008.png</key>
-            <key type="filename">textures_src/idle/idle_009.png</key>
-            <key type="filename">textures_src/idle/idle_010.png</key>
-            <key type="filename">textures_src/idle/idle_011.png</key>
-            <key type="filename">textures_src/jump /p1jump_000.png</key>
-            <key type="filename">textures_src/jump /p1jump_001.png</key>
-            <key type="filename">textures_src/jump /p1jump_002.png</key>
-            <key type="filename">textures_src/jump /p1jump_003.png</key>
-            <key type="filename">textures_src/jump /p1jump_004.png</key>
-            <key type="filename">textures_src/jump /p1jump_005.png</key>
-            <key type="filename">textures_src/jump /p1jump_006.png</key>
-            <key type="filename">textures_src/jump /p1jump_007.png</key>
-            <key type="filename">textures_src/jump /p1jump_008.png</key>
-            <key type="filename">textures_src/jump /p1jump_009.png</key>
-            <key type="filename">textures_src/jump /p1jump_010.png</key>
-            <key type="filename">textures_src/p1run/p1run_000.png</key>
-            <key type="filename">textures_src/p1run/p1run_001.png</key>
-            <key type="filename">textures_src/p1run/p1run_002.png</key>
-            <key type="filename">textures_src/p1run/p1run_003.png</key>
-            <key type="filename">textures_src/p1run/p1run_004.png</key>
-            <key type="filename">textures_src/p1run/p1run_005.png</key>
-            <key type="filename">textures_src/p1run/p1run_006.png</key>
-            <key type="filename">textures_src/p1run/p1run_007.png</key>
-            <key type="filename">textures_src/p1run/p1run_008.png</key>
-            <key type="filename">textures_src/p1run/p1run_009.png</key>
-            <key type="filename">textures_src/p1run/p1run_010.png</key>
-            <key type="filename">textures_src/p1run/p1run_011.png</key>
-            <key type="filename">textures_src/p1run/p1run_012.png</key>
-            <key type="filename">textures_src/p1run/p1run_013.png</key>
-            <key type="filename">textures_src/p1run/p1run_014.png</key>
-            <key type="filename">textures_src/p1run/p1run_015.png</key>
+            <key type="filename">fist/fist1_000.png</key>
+            <key type="filename">fist/fist1_001.png</key>
+            <key type="filename">fist/fist1_002.png</key>
+            <key type="filename">fist/fist1_003.png</key>
+            <key type="filename">fist/fist1_004.png</key>
+            <key type="filename">fist/fist1_005.png</key>
+            <key type="filename">fist/fist1_006.png</key>
+            <key type="filename">fist/fist1_007.png</key>
+            <key type="filename">fist/fist1_008.png</key>
+            <key type="filename">fist/fist1_009.png</key>
+            <key type="filename">fist/fist1_010.png</key>
+            <key type="filename">fist/fist1_011.png</key>
+            <key type="filename">fist/fist2_000.png</key>
+            <key type="filename">fist/fist2_001.png</key>
+            <key type="filename">fist/fist2_002.png</key>
+            <key type="filename">fist/fist2_003.png</key>
+            <key type="filename">fist/fist2_004.png</key>
+            <key type="filename">fist/fist2_005.png</key>
+            <key type="filename">fist/fist2_006.png</key>
+            <key type="filename">fist/fist2_007.png</key>
+            <key type="filename">fist/fist2_008.png</key>
+            <key type="filename">fist/fist2_009.png</key>
+            <key type="filename">fist/fist2_010.png</key>
+            <key type="filename">fist/fist2_011.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>16,16,32,32</rect>
+                <rect>64,128,128,256</rect>
                 <key>scale9Paddings</key>
-                <rect>16,16,32,32</rect>
+                <rect>64,128,128,256</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>textures_src</filename>
+            <filename>fist</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
