@@ -161,7 +161,7 @@ override function init() {
 
         ready = true;
 
-
+        // win(1);
     } //onenter
 
     public function fistSmash(data:Dynamic){
@@ -232,6 +232,22 @@ override function init() {
 
     public function win(player:Int){
         trace("player "+ player+ " win");
+
+                //now that we have some fonts, lets write something
+        text = Luxe.draw.text({
+            font: Main.font,
+            text : "PLAYER "+ player + " WINS",
+            bounds : new Rectangle(0, 0, Luxe.screen.w * 0.99, Luxe.screen.h * 0.98),
+            color : new Color().rgb(0xfcc53a),
+            align : TextAlign.center,
+            align_vertical : TextAlign.bottom,
+            point_size : 150,
+            depth: 100
+        });
+        
+        text.texture.filter_mag = FilterType.nearest;
+
+
     }
 
     public function normaliseAngle(angle:Float){
