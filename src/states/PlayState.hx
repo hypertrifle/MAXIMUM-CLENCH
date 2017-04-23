@@ -32,8 +32,10 @@ class PlayState extends State {
     public var world:Sprite;
 
     public var bloodTexture:Texture;
+    public var impactTexture:Texture;
 
     public var blood:Sprite;
+    public var impact:Sprite;
 
     public var text:TextGeometry;
 
@@ -106,6 +108,9 @@ override function init() {
         bloodTexture = Luxe.resources.texture("assets/blood.png");
         bloodTexture.filter_mag = FilterType.nearest;
 
+        impactTexture = Luxe.resources.texture("assets/impact.png");
+        bloodTexture.filter_mag = FilterType.nearest;
+
         //build our planet?
 
         // var world = Luxe.
@@ -161,7 +166,7 @@ override function init() {
 
     public function fistSmash(data:Dynamic){
         trace("smash", data);
-        Luxe.camera.shake(0.8*data.power);
+        Luxe.camera.shake(4*(data.power+3));
 
 
         //lets see if we hit anyone
@@ -173,6 +178,8 @@ override function init() {
 
         var p1angle = normaliseAngle(PlayerOne.rotation_z);
         var p2angle = normaliseAngle(PlayerTwo.rotation_z);
+
+        spawnImpact(angle);
 
         if(!PlayerOne.dead && p1angle < max && p1angle > min  ){
             trace("kill green");
@@ -250,6 +257,43 @@ override function init() {
                     "events" : [{"frame":19, "event":"end.anim"}],
                     "loop": "false",
                     "speed": "30"
+                }
+            }
+        ');
+    anim.animation = "play";
+    anim.play();
+
+    }
+    public function spawnImpact(angle:Float){
+
+        if(impact != null){
+            impact.destroy();
+        }
+        impact = new Sprite({
+            name:'impact',
+            texture : impactTexture,
+            pos : Luxe.screen.mid,
+            scale: new Vector(1,1,1),
+            size : new Vector(256,128),
+            origin: new Vector(128,Contants.worldSize+100,0),
+            depth:3,
+            rotation_z:angle,
+        });
+
+    impact.events.listen("end.anim",function(e){
+            // blood.destroy();
+        });
+
+    var anim = new SpriteAnimation({ name:'anim' });
+    impact.add(anim);
+    anim.add_from_json('
+            {
+                "play" : {
+                    "frame_size":{ "x":"256", "y":"128" },
+                    "frameset": ["1-27"],
+                    "events" : [{"frame":27, "event":"end.anim"}],
+                    "loop": "false",
+                    "speed": "20"
                 }
             }
         ');

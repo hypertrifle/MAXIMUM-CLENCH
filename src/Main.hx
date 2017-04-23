@@ -38,6 +38,7 @@ class Main extends luxe.Game {
         config.preload.textures.push({id:"assets/bar.png"});
         config.preload.textures.push({id:"assets/hud.png"});
         config.preload.textures.push({id:"assets/star.png"});
+        config.preload.textures.push({id:"assets/impact.png"});
 
         config.preload.textures.push({id:"assets/fist.png"});
         config.preload.textures.push({id:"assets/pickup.png"});
