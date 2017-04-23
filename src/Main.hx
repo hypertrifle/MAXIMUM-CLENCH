@@ -2,6 +2,7 @@
 import luxe.GameConfig;
 import luxe.Input;
 import luxe.States;
+import luxe.Color;
 
 
 import phoenix.Texture;
@@ -70,6 +71,9 @@ class Main extends luxe.Game {
         Luxe.input.bind_gamepad('p2jump', 0, 1);
         Luxe.input.bind_gamepad('p2dash', 1, 1);
 
+
+        Luxe.renderer.clear(new Color().rgb(0x27022f));
+        Luxe.renderer.clear_color = new Color().rgb(0x27022f);
         
 
 
@@ -108,12 +112,12 @@ class Main extends luxe.Game {
         }
 
         if(event.keycode == Key.space) {
-            // machine.destroy();
-            // machine = new States({ name:'statemachine' });
-            // machine.add(new MenuState({ name:'menu', game:this }));
-            // machine.add(new PlayState({ name:'play', game:this }));
-            // //goto our tests state
-            // machine.set('play');
+            machine.destroy();
+            machine = new States({ name:'statemachine' });
+            machine.add(new MenuState({ name:'menu', game:this }));
+            machine.add(new PlayState({ name:'play', game:this }));
+            //goto our tests state
+            machine.set('play');
         }
 
     } //onkeyup

@@ -13,6 +13,7 @@ import luxe.Color;
 import luxe.Rectangle;
 import phoenix.BitmapFont;
 import phoenix.geometry.Geometry;
+import phoenix.geometry.TextGeometry;
 
 
 import luxe.tween.Actuate;
@@ -33,6 +34,8 @@ class PlayState extends State {
     public var bloodTexture:Texture;
 
     public var blood:Sprite;
+
+    public var text:TextGeometry;
 
 public function new(_config:Dynamic){
     super(_config);
@@ -90,7 +93,7 @@ override function init() {
         
 
         //now that we have some fonts, lets write something
-        var text = Luxe.draw.text({
+        text = Luxe.draw.text({
             font: Main.font,
             text : "LD38",
             bounds : new Rectangle(0, 0, Luxe.screen.w * 0.99, Luxe.screen.h * 0.98),
@@ -193,6 +196,13 @@ override function init() {
         trace("Play LEAVE");
 
         //destoy everything please
+
+        PlayerOne.destroy();
+        PlayerTwo.destroy();
+        world.destroy();
+        // text.
+        ready = false;
+        
 
    
     } //onleave
