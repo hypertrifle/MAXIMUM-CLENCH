@@ -42,6 +42,7 @@ class Main extends luxe.Game {
         config.preload.textures.push({id:"assets/hud.png"});
         config.preload.textures.push({id:"assets/star.png"});
         config.preload.textures.push({id:"assets/impact.png"});
+        config.preload.textures.push({id:"assets/title.png"});
 
         config.preload.textures.push({id:"assets/fist.png"});
         config.preload.textures.push({id:"assets/pickup.png"});
@@ -121,7 +122,7 @@ class Main extends luxe.Game {
         machine.add(new MenuState({ name:'menu', game:this }));
         machine.add(new PlayState({ name:'play', game:this }));
         //goto our tests state
-        machine.set('play');
+        machine.set('menu');
 
         music = Luxe.resources.audio('assets/Sound/music.ogg');
         
@@ -139,7 +140,11 @@ class Main extends luxe.Game {
     override function onkeyup(event:KeyEvent) {
 
         if(event.keycode == Key.escape) {
-            Luxe.shutdown();
+            if(machine.current_state.name == "menu"){
+                Luxe.shutdown();
+            } else {
+                machine.set("menu");
+            }
         }
 
         if(event.keycode == Key.space) {

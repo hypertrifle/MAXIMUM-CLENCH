@@ -7,13 +7,13 @@ import luxe.Sprite;
 import luxe.options.SpriteOptions;
 import luxe.Vector;
 import phoenix.Texture;
-import phoenix.Texture.FilterType;
 import luxe.components.sprite.SpriteAnimation;
 import luxe.Color;
-import luxe.Rectangle;
 import phoenix.BitmapFont;
 import phoenix.geometry.Geometry;
 import phoenix.geometry.TextGeometry;
+import luxe.Rectangle;
+import phoenix.Texture.FilterType;
 
 
 import luxe.tween.Actuate;
@@ -115,12 +115,13 @@ override function init() {
 
         // var world = Luxe.
 
-        Contants.worldSize = Luxe.screen.height/3.5;
+        Contants.worldSize = 200;
         Contants.worldCirc = 2*Math.PI*Contants.worldSize;
         trace("world radius:"+ Contants.worldSize);
         trace("world Circumfrence:"+ Contants.worldCirc);
 
         var world_texture:Texture = Luxe.resources.texture("assets/planet/planet_000.png");
+        world_texture.filter_mag = FilterType.nearest;
         world = new Sprite({
             texture: world_texture,
             pos: Luxe.screen.mid,
@@ -233,6 +234,8 @@ override function init() {
     public function win(player:Int){
         trace("player "+ player+ " win");
 
+        player = (player == 1)? 2 : 1;
+
                 //now that we have some fonts, lets write something
         text = Luxe.draw.text({
             font: Main.font,
@@ -246,6 +249,11 @@ override function init() {
         });
         
         text.texture.filter_mag = FilterType.nearest;
+
+
+        Actuate.timer(3).onComplete(function(e){
+            Main.machine.set("menu");
+        });
 
 
     }
@@ -338,6 +346,19 @@ override function init() {
         PlayerOne.destroy();
         PlayerTwo.destroy();
         world.destroy();
+
+        for(i in 0...stars.length){
+            stars[i].destroy();
+        }
+        stars = new Array<Sprite>();
+
+        for(i in 0...pickup_pool.length){
+            pickup_pool[i].destroy();
+        }
+        pickup_dead_pool = new Array<Int>();
+        pickup_pool = new Array<Pickup>();
+
+        text.visible = false;
         // text.
         ready = false;
         

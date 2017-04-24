@@ -8,6 +8,7 @@ import phoenix.Texture;
 import phoenix.Texture.FilterType;
 import luxe.components.sprite.SpriteAnimation;
 import luxe.tween.Actuate;
+import phoenix.BitmapFont;
 
 
 typedef PlayerOptions = {
@@ -244,6 +245,11 @@ public function score(){
     updateEnergyBar();
 
     Main.playSound("pickup1");
+    fist.color.r = 5;
+    fist.color.g = 5;
+    fist.color.b = 5;
+    Actuate.tween(fist.color,0.1,{r:1,g:1,b:1}, true);
+
 }
 
 
@@ -332,6 +338,11 @@ public function updateEnergyBar(){
                 fistPulling = true;
                 fistPower += 20*dt;
                 this.fist.origin.y = 512+Contants.worldSize+128 + fistPower;
+            } else {
+                fist.color.r = 256;
+                fist.color.g = 0;
+                fist.color.b = 0;
+                Actuate.tween(fist.color,0.1,{r:1,g:1,b:1}, true);
             }
 
         }else if(energy > 0.01*dt && Luxe.input.inputdown("p"+playerNumber+"fistleft")){
@@ -452,6 +463,8 @@ public function setDizzy(){
 override public function destroy(?_from_parent:Bool):Void{
 
     fist.destroy();
+    hud.destroy();
+    powerBar.destroy();
     super.destroy(_from_parent);
 }
   

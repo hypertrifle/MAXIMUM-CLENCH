@@ -4,6 +4,8 @@ import luxe.Sprite;
 import luxe.components.sprite.SpriteAnimation;
 import luxe.Vector;
 import phoenix.Texture;
+import phoenix.Texture.FilterType;
+
 
 class Pickup extends Sprite {
 
@@ -15,6 +17,7 @@ class Pickup extends Sprite {
 override public function new(_:Dynamic){
 
     var tex:Texture = Luxe.resources.texture("assets/pickup.png");
+    tex.filter_mag = FilterType.nearest;
     super({name:"pickups"+_.i,
             texture : tex,
             pos : Luxe.screen.mid,
