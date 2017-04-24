@@ -1,8 +1,8 @@
-#MAXIMUM CLENCH - [Ludum Dare 38](https://ldjam.com/events/ludum-dare/38/maximum-clench)
+# MAXIMUM CLENCH - [Ludum Dare 38](https://ldjam.com/events/ludum-dare/38/maximum-clench)
 
 a 2 play competitive mini game, each player has control of both their inner runner and outer fist (indicated by green / purple colours).
 
-##PLAY
+## PLAY
 
 [Web version](http://www.hypertrifle.com/fist.html) | [Mac App](http://www.hypertrifle.com/fist_mac.zip) | [Mac App](http://www.hypertrifle.com/fist_pc.zip) | [source](https://github.com/hypertrifle/LD38)
 
@@ -48,7 +48,7 @@ Thanks to everyone in the Luxe engine / Support Gitter! and big thanks to [@___d
 
 ## HT x CM
 
-###todo
+### todo
 - varrible terrain
 - bonus pickups (big fist, unlimited power, fast fist etc...)
 - tweak cooldowns on abilities punch less frequent?
