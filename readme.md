@@ -6,7 +6,7 @@ a 2 play competitive mini game, each player has control of both their inner runn
 
 [Web version](http:://www.hypertrifle.com/fist.html) | (Mac App)[http:://www.hypertrifle.com/fist_mac.zip] | (Mac App)[http:://www.hypertrifle.com/fist_pc.zip] | [source](https://github.com/hypertrifle/LD38)
 
-# TIPS
+## TIPS
 
 Players must start by gaining fuel for their fist by collecting the yellow orbs on the planet, once your fist has enough power (indicated by the power bar on the wrist), you are able to move it, and punch (press both left and right fist buttons together).
 
@@ -16,7 +16,7 @@ First player to smash the other player 5 times wins! (indicated by the coloured 
 
 ESC to return to the menu.
 
-#controls
+## controls
 
 *Keyboard controls (although you can use the keyboard to play this game we highly recommend using 2 gamepads and mapping (using something like (Joy2Key)[http://joytokey.net/en/]) them to the following keys).*
 
@@ -39,7 +39,12 @@ Written in HAXE / LUXE.
 
 Thanks to everyone in the Luxe engine / Support Gitter! and big thanks to (@___discovery)[https://twitter.com/___discovery/]
 
- 
+ ## Images
+
+ ![LOGO](https://raw.githubusercontent.com/hypertrifle/LD38/master/assets/promo/title.png "maximum clench")
+ ![Screenshot](https://raw.githubusercontent.com/hypertrifle/LD38/master/assets/promo/ss1.png "maximum clench")
+ ![gameplay](https://raw.githubusercontent.com/hypertrifle/LD38/master/assets/promo/cap2.gif "maximum clench")
+
 
 ## HT x CM
 
