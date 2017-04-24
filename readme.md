@@ -4,7 +4,7 @@ a 2 play competitive mini game, each player has control of both their inner runn
 
 ## PLAY
 
-[Web version](http://www.hypertrifle.com/fist.html) | [Mac App](http://www.hypertrifle.com/fist_mac.zip) | [Mac App](http://www.hypertrifle.com/fist_pc.zip) | [source](https://github.com/hypertrifle/LD38)
+[Web version](http://www.hypertrifle.com/fist.html) | [Mac App](http://www.hypertrifle.com/fist_mac.zip) | [Windows App](http://www.hypertrifle.com/fist_pc.zip) | [source](https://github.com/hypertrifle/LD38)
 
 ## TIPS
 
