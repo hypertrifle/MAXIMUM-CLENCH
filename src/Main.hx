@@ -3,14 +3,13 @@ import luxe.GameConfig;
 import luxe.Input;
 import luxe.States;
 import luxe.Color;
+import luxe.Vector;
 
+import luxe.Screen.WindowEvent;
 
 import phoenix.Texture;
 import phoenix.BitmapFont;
 
-import luxe.importers.texturepacker.TexturePackerData;
-import luxe.importers.texturepacker.TexturePackerJSON;
-import luxe.importers.texturepacker.TexturePackerSpriteAnimation;
 import luxe.resource.Resource.AudioResource;
 
 
@@ -23,6 +22,10 @@ class Main extends luxe.Game {
     public static var atlasData:Dynamic;
     public static var font:BitmapFont;
 
+    public var gameResolution:Vector;
+    public var zoomRatio:Vector;
+    public var zoom:Float;
+
     public var music:AudioResource;
 
     override function config(config:GameConfig) {
@@ -31,6 +34,10 @@ class Main extends luxe.Game {
         config.window.width = 1280;
         config.window.height = 700;
         config.window.fullscreen = false;
+        config.window.resizable = false;
+
+        gameResolution = new Vector(1280,700);
+        zoomRatio = new Vector(0,0);
        
         config.preload.textures.push({ id:'assets/textures_src/idle/idle_000.png' });
         config.preload.fonts.push({ id:'assets/font_bold_ld.fnt' });
@@ -161,5 +168,24 @@ class Main extends luxe.Game {
     override function update(delta:Float) {
 
     } //update
+
+override function onwindowsized( e:WindowEvent ):Void {
+
+//     trace("resize", Luxe.screen);
+  
+//   zoomRatio.x = Math.floor(Luxe.screen.w / gameResolution.x);
+//   zoomRatio.y = Math.floor(Luxe.screen.h / gameResolution.y);
+  
+//   //get the smallest zoom ratio between zoomRatio.x and zoomRatio.y, and limit it to be greater or equal  1
+//   zoom = Math.floor(Math.max(0, Math.min(zoomRatio.x, zoomRatio.y)));
+
+//   var width = gameResolution.x * zoom;
+//   var height = gameResolution.y * zoom;
+//   var x = (Luxe.screen.w / 2) - (width / 2);
+//   var y = (Luxe.screen.h / 2) - (height / 2);
+
+//   Luxe.camera.viewport.set(x, y, width, height);
+  
+}
 
 } //Main

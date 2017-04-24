@@ -99,7 +99,7 @@ override function onenter<T>( _data:T ) {
 
         text = Luxe.draw.text({
             font: Main.font,
-            text : "PRESS A TO GET FISTED",
+            text : "PRESS JUMP TO START",
             bounds : new Rectangle(0, 0, Luxe.screen.w * 0.99, Luxe.screen.h * 0.98),
             color : new Color().rgb(0xfcc53a),
             align : TextAlign.center,
