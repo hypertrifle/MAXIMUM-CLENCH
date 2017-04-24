@@ -84,10 +84,10 @@ class Main extends luxe.Game {
         Luxe.input.bind_key('p1dash', Key.down);
         Luxe.input.bind_key('p1fistleft', Key.leftbracket); 
         Luxe.input.bind_key('p1fistright', Key.rightbracket);
-        Luxe.input.bind_gamepad('p1fistleft', 9, 0);
-        Luxe.input.bind_gamepad('p1fistright', 10, 0);
-        Luxe.input.bind_gamepad('p1jump', 0, 0);
-        Luxe.input.bind_gamepad('p1dash', 1, 0);
+        // Luxe.input.bind_gamepad('p1fistleft', 9, 0);
+        // Luxe.input.bind_gamepad('p1fistright', 10, 0);
+        // Luxe.input.bind_gamepad('p1jump', 0, 0);
+        // Luxe.input.bind_gamepad('p1dash', 1, 0);
 
         Luxe.input.bind_key('p2left', Key.key_a); 
         Luxe.input.bind_key('p2right', Key.key_d);
@@ -95,10 +95,10 @@ class Main extends luxe.Game {
         Luxe.input.bind_key('p2dash', Key.key_s);
         Luxe.input.bind_key('p2fistleft', Key.key_c); 
         Luxe.input.bind_key('p2fistright', Key.key_v);
-        Luxe.input.bind_gamepad('p2fistleft', 9, 1);
-        Luxe.input.bind_gamepad('p2fistright', 10, 1);
-        Luxe.input.bind_gamepad('p2jump', 0, 1);
-        Luxe.input.bind_gamepad('p2dash', 1, 1);
+        // Luxe.input.bind_gamepad('p2fistleft', 9, 1);
+        // Luxe.input.bind_gamepad('p2fistright', 10, 1);
+        // Luxe.input.bind_gamepad('p2jump', 0, 1);
+        // Luxe.input.bind_gamepad('p2dash', 1, 1);
 
 
         Luxe.renderer.clear(new Color().rgb(0x27022f));
