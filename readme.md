@@ -1,4 +1,4 @@
-#MAXIMUM CLENCH - (Ludum Dare 38)[https://ldjam.com/]
+#MAXIMUM CLENCH - [Ludum Dare 38](https://ldjam.com/events/ludum-dare/38/maximum-clench)
 
 a 2 play competitive mini game, each player has control of both their inner runner and outer fist (indicated by green / purple colours).
 
@@ -37,7 +37,7 @@ All ART (CHRIS) / CODE (RICH) was done in the first 48 hours of the jam by 2 peo
 
 Written in HAXE / LUXE.
 
-Thanks to everyone in the Luxe engine / Support Gitter! and big thanks to (@___discovery)[https://twitter.com/___discovery/]
+Thanks to everyone in the Luxe engine / Support Gitter! and big thanks to [@___discovery](https://twitter.com/___discovery/)
 
  ## Images
 
