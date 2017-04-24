@@ -192,9 +192,40 @@
             <false/>
         </struct>
         <key>individualSpriteSettings</key>
-        <map type="IndividualSpriteSettingsMap"/>
+        <map type="IndividualSpriteSettingsMap">
+            <key type="filename">planet 4/title_000.png</key>
+            <key type="filename">planet 4/title_001.png</key>
+            <key type="filename">planet 4/title_002.png</key>
+            <key type="filename">planet 4/title_003.png</key>
+            <key type="filename">planet 4/title_004.png</key>
+            <key type="filename">planet 4/title_005.png</key>
+            <key type="filename">planet 4/title_006.png</key>
+            <key type="filename">planet 4/title_007.png</key>
+            <key type="filename">planet 4/title_008.png</key>
+            <key type="filename">planet 4/title_009.png</key>
+            <key type="filename">planet 4/title_010.png</key>
+            <key type="filename">planet 4/title_011.png</key>
+            <key type="filename">planet 4/title_012.png</key>
+            <key type="filename">planet 4/title_013.png</key>
+            <key type="filename">planet 4/title_014.png</key>
+            <key type="filename">planet 4/title_015.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>128,128,256,256</rect>
+                <key>scale9Paddings</key>
+                <rect>128,128,256,256</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+        </map>
         <key>fileList</key>
-        <array/>
+        <array>
+            <filename>planet 4</filename>
+        </array>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>
